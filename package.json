@@ -15,7 +15,6 @@
     "postcss-import": "^15.1.0",
     "postcss-nested": "^6.0.1",
     "vue": "^3.2.13",
-   
     "vue-template-compiler": "^2.7.14",
     "vue-uuid": "^3.0.0",
     "vuex": "^4.1.0"
