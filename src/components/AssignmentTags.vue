@@ -125,7 +125,20 @@ export default {
     saveTags(e) {
       let oldTags = this.tagsStringArray;
       let i = 0;
-      this.stringTagsToArray(e.target.value).forEach((element) => {
+      let newTags =this.stringTagsToArray(e.target.value);
+      if(newTags.length<oldTags.length)
+     {
+     
+     /* let oo = Tag.query().where('assignment_id', this.assignmentId).get()
+     console.log('oo', oo) */
+       oldTags = [];
+       Tag.delete((tag) => {
+  return tag.assignment_id== this.assignmentId
+})
+
+     }
+      
+      newTags.forEach((element) => {
         if (oldTags.length > i) {
           let tag = oldTags[i];
           tag.name = element;
