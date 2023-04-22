@@ -1,6 +1,5 @@
 <template>
   <div class="TodosAssignee" style="height: 50px">
-   
     <div v-if="inputFieldVisibility" style="width: 100%">
       <div style="width: 90%; float: left">
         <textarea
@@ -53,18 +52,14 @@
         <span class="badge">{{ tag.name }}</span>
       </span>
     </div>
- 
   </div>
 </template>
 
 <script>
-
 import Tag from "@/models/Tag";
 import browserStorage from "@/browser/BrowserStorage";
 
-
 export default {
-
   props: {
     assignmentId: { type: String, required: true },
     selectedComponentId: { type: String, required: true },
@@ -125,19 +120,14 @@ export default {
     saveTags(e) {
       let oldTags = this.tagsStringArray;
       let i = 0;
-      let newTags =this.stringTagsToArray(e.target.value);
-      if(newTags.length<oldTags.length)
-     {
-     
-     /* let oo = Tag.query().where('assignment_id', this.assignmentId).get()
-     console.log('oo', oo) */
-       oldTags = [];
-       Tag.delete((tag) => {
-  return tag.assignment_id== this.assignmentId
-})
+      let newTags = this.stringTagsToArray(e.target.value);
+      if (newTags.length < oldTags.length) {
+        oldTags = [];
+        Tag.delete((tag) => {
+          return tag.assignment_id == this.assignmentId;
+        });
+      }
 
-     }
-      
       newTags.forEach((element) => {
         if (oldTags.length > i) {
           let tag = oldTags[i];
